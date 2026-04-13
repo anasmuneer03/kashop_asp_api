@@ -12,7 +12,7 @@ namespace KASHOP.DAL.Models
         public string Name { get; set; } = null!;
         public string Language { get; set; } = "en";
         public int CategoryId { get; set; } //foriegn key
-        public Category Category { get; set; }
+        public Category Category { get; set; } //navigation property
         
     }
 }
