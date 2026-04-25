@@ -1,5 +1,6 @@
 ﻿using KASHOP.BLL.Service;
 using KASHOP.DAL.DTO.Request;
+using KASHOP.DAL.DTO.Response;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KASHOP.PL.Controllers
@@ -18,7 +19,9 @@ namespace KASHOP.PL.Controllers
         public async Task<IActionResult> Register(RegisterRequest request) 
         { 
             var result = await _authenticationService.RegisterAsync(request);
-            return Ok(result);  
+            if(result.Success)
+                return Ok(result);  
+            return BadRequest(result);
         }
 
         [HttpPost("login")]
@@ -34,6 +37,20 @@ namespace KASHOP.PL.Controllers
             var isConfirmed = await _authenticationService.ConfirmEmailAsync(token, userId);
             if(!isConfirmed) return BadRequest();
             return Ok();
+        }
+        [HttpPost("SendCode")]
+        public async Task<IActionResult> RequsetPasswordReset(ForgotPasswordRequest request)
+        {
+            var result = await _authenticationService.RequestPasswordResetAsync(request);
+            if (!result.Success) return BadRequest(result);
+            return Ok(result);
+        }
+        [HttpPost("ResetPassword")]
+        public async Task<IActionResult> PasswordReset(ResetPasswordRequest request)
+        {
+            var result = await _authenticationService.PasswordResetAsync(request);
+            if (!result.Success) return BadRequest(result);
+            return Ok(result);
         }
     }
 }

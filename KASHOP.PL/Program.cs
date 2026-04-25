@@ -1,3 +1,4 @@
+using KASHOP.BLL.Mapping;
 using KASHOP.BLL.Service;
 using KASHOP.DAL.Data;
 using KASHOP.DAL.Models;
@@ -26,7 +27,20 @@ namespace KASHOP.PL
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
-            
+            //cors policy
+            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                    policy =>
+                    {
+                        policy.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+            });
+
             //database connection
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             {
@@ -56,11 +70,24 @@ namespace KASHOP.PL
             builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
             builder.Services.AddScoped<ISeedData, RoleSeedData>();
             builder.Services.AddTransient<IEmailSender, EmailSender>();
-
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<IFileService, FileService > ();
+            builder.Services.AddScoped<IBrandRepository, BrandRepository>();
+            builder.Services.AddScoped<IBrandService, BrandService>();
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => 
             {
                 options.User.RequireUniqueEmail = true; 
+
+                options.Password.RequireDigit = true; //0-9
+                options.Password.RequireLowercase = true; // a-z
+                options.Password.RequireUppercase = true; //A-Z
+                options.Password.RequireNonAlphanumeric = true; // ! # $ * _
+                options.Password.RequiredLength = 10;
+                
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
@@ -88,6 +115,7 @@ namespace KASHOP.PL
 
             builder.Services.AddAuthorization();
 
+            MapsterConfig.MapsterConfigRegister();
 
             var app = builder.Build();
 
@@ -100,13 +128,15 @@ namespace KASHOP.PL
                 app.MapOpenApi();
             }
 
+            app.UseCors(MyAllowSpecificOrigins);
+
             app.UseHttpsRedirection();
 
             app.UseAuthentication();
 
             app.UseAuthorization();
 
-
+            app.UseStaticFiles();
             app.MapControllers();
 
             using (var scope = app.Services.CreateScope())

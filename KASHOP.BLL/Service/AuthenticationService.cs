@@ -2,6 +2,7 @@
 using KASHOP.DAL.DTO.Response;
 using KASHOP.DAL.Models;
 using Mapster;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -20,13 +21,16 @@ namespace KASHOP.BLL.Service
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IEmailSender _emailSender;
         private readonly IConfiguration _configuration;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         public AuthenticationService(UserManager<ApplicationUser> userManager,
             IEmailSender emailSender, 
-            IConfiguration configuration) 
+            IConfiguration configuration,
+            IHttpContextAccessor httpContextAccessor) 
         {
             _userManager = userManager;
             _emailSender = emailSender;
             _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
         }
 
 
@@ -35,13 +39,14 @@ namespace KASHOP.BLL.Service
             var user = request.Adapt<ApplicationUser>();
             var result = await _userManager.CreateAsync(user, request.Password);
             if (!result.Succeeded)
-                return new RegisterResponse() { Success = false, Message = "error" };
+                return new RegisterResponse()
+                { Success = false, Message = "error", Errors = result.Errors.Select(e => e.Description).ToList() };
 
             await _userManager.AddToRoleAsync(user, "User");
 
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             token = Uri.EscapeDataString(token);
-            var emailUrl = $"http://localhost:5256/api/account/ConfirmEmail?token={token}&userId={user.Id}";
+            var emailUrl = $"{_httpContextAccessor.HttpContext.Request.Scheme}://{_httpContextAccessor.HttpContext.Request.Host}/api/account/ConfirmEmail?token={token}&userId={user.Id}";
             await _emailSender.SendEmailAsync(user.Email, "Welcome", $"<h1>welcome {user.UserName}</h1>" +
                 $"<a href='{emailUrl}'>confirm</a>");
             return new RegisterResponse() { Success = true, Message = "success" };
@@ -95,6 +100,90 @@ namespace KASHOP.BLL.Service
             if(!result.Succeeded)
                 return false;
             return true;
+        }
+
+        public async Task<ForgotPasswordResponse> RequestPasswordResetAsync(ForgotPasswordRequest request) 
+        {
+            var user = await _userManager.FindByEmailAsync(request.Email);
+         
+            if(user is null)
+                return new ForgotPasswordResponse() { 
+                    Message = "Email is not valid",
+                    Success = false
+                };
+           
+            var random = new Random();
+            var code = random.Next(1000, 9999).ToString();
+
+            user.ResetPasswordCode = code;
+            user.ResetPasswordCodeExpire = DateTime.Now.AddMinutes(15);
+
+            await _userManager.UpdateAsync(user);
+            await _emailSender.SendEmailAsync(request.Email, "reset password", $"<p>code is {code}</p>");
+            return new ForgotPasswordResponse() 
+            {
+                Message = "code sent to your email",
+                Success = true  
+            };  
+        }
+        public async Task<ResetPasswordResponse> PasswordResetAsync(ResetPasswordRequest request)
+        {
+            var user = await _userManager.FindByEmailAsync(request.Email);
+            if (user is null)
+                return new ResetPasswordResponse() 
+                { 
+                    Message = "Email is not valid",
+                    Success = false
+                };
+
+            else if (user.ResetPasswordCode != request.Code)
+            {
+                return new ResetPasswordResponse()
+                {
+                    Message = "code is not valid",
+                    Success = false
+                };
+            }
+
+            else if (user.ResetPasswordCodeExpire < DateTime.UtcNow)
+            {
+                return new ResetPasswordResponse()
+                {
+                    Message = "code has expired",
+                    Success = false
+                };
+            }
+
+            var isSamePassword = await _userManager.CheckPasswordAsync(user, request.NewPassword);
+            if (isSamePassword) 
+            {
+                return new ResetPasswordResponse()
+                {
+                    Message = "new passord must be different than old password",
+                    Success = false
+                };
+            }
+
+
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var result = await _userManager.ResetPasswordAsync(user, token, request.NewPassword);
+            if (!result.Succeeded)
+            {
+                return new ResetPasswordResponse()
+                {
+                    Message = "password reset failed",
+                    Success = false
+                };
+            }
+
+            await _emailSender.SendEmailAsync(request.Email, "change password", "<p>your password changed successfully</p>");
+
+            return new ResetPasswordResponse()
+            {
+                Message = "password reset succesfully",
+                Success = true
+            };
+
         }
     }
 }

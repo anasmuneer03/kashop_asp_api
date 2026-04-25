@@ -12,6 +12,10 @@ namespace KASHOP.DAL.Data
         IHttpContextAccessor _httpContextAccessor;
         public DbSet<Category> Categories {  get; set; }
         public DbSet<CategoryTranslation> CategoryTranslations { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductTranslations> ProductTranslations { get; set; }
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<BrandTranslations> BrandTranslations { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options,
             IHttpContextAccessor httpContextAccessor)
         : base(options)
@@ -27,6 +31,43 @@ namespace KASHOP.DAL.Data
             builder.Entity<ApplicationUser>().ToTable("Users");
             builder.Entity<IdentityRole>().ToTable("Roles");
             builder.Entity<IdentityUserRole<string>>().ToTable("UserRoles");
+
+            builder.Entity<Category>()
+                .HasOne(p => p.CreatedBy)
+                .WithMany()
+                .HasForeignKey(p => p.CreatedById)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Category>()
+                .HasOne(p => p.UpdatedBy)
+                .WithMany()
+                .HasForeignKey(p => p.UpdatedById)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Product>()
+                .HasOne(p => p.CreatedBy)
+                .WithMany()
+                .HasForeignKey(p => p.CreatedById)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Product>()
+                .HasOne(p => p.UpdatedBy)
+                .WithMany()
+                .HasForeignKey(p => p.UpdatedById)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            //builder.Entity<Brand>()
+            //    .HasOne(p => p.CreatedBy)
+            //    .WithMany()
+            //    .HasForeignKey(p => p.CreatedById)
+            //    .OnDelete(DeleteBehavior.Restrict);
+
+            //builder.Entity<Brand>()
+            //    .HasOne(p => p.UpdatedBy)
+            //    .WithMany()
+            //    .HasForeignKey(p => p.UpdatedById)
+            //    .OnDelete(DeleteBehavior.Restrict);
+
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

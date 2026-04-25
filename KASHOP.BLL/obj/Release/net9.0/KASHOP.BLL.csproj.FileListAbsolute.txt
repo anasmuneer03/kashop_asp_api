@@ -1,0 +1,16 @@
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.BLL\bin\Release\net9.0\KASHOP.BLL.deps.json
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.BLL\bin\Release\net9.0\KASHOP.BLL.dll
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.BLL\bin\Release\net9.0\KASHOP.BLL.pdb
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.BLL\bin\Release\net9.0\KASHOP.DAL.dll
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.BLL\bin\Release\net9.0\KASHOP.DAL.pdb
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.BLL\obj\Release\net9.0\KASHOP.BLL.csproj.AssemblyReference.cache
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.BLL\obj\Release\net9.0\KASHOP.BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.BLL\obj\Release\net9.0\KASHOP.BLL.AssemblyInfoInputs.cache
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.BLL\obj\Release\net9.0\KASHOP.BLL.AssemblyInfo.cs
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.BLL\obj\Release\net9.0\KASHOP.BLL.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.BLL\obj\Release\net9.0\KASHOP.BLL.sourcelink.json
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.BLL\obj\Release\net9.0\KASHOP.BLL.csproj.Up2Date
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.BLL\obj\Release\net9.0\KASHOP.BLL.dll
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.BLL\obj\Release\net9.0\refint\KASHOP.BLL.dll
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.BLL\obj\Release\net9.0\KASHOP.BLL.pdb
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.BLL\obj\Release\net9.0\ref\KASHOP.BLL.dll
