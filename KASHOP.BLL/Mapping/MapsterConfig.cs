@@ -1,4 +1,5 @@
-﻿using KASHOP.DAL.DTO.Response;
+﻿using KASHOP.DAL.DTO.Request;
+using KASHOP.DAL.DTO.Response;
 using KASHOP.DAL.Models;
 using Mapster;
 using System;
@@ -24,10 +25,13 @@ namespace KASHOP.BLL.Mapping
             TypeAdapterConfig<Product, ProductResponse>.NewConfig().
                 Map(dest => dest.ProductId, source => source.Id)
                 .Map(dest => dest.UserCreated, source => source.CreatedBy.UserName)
-                .Map(dest => dest.Name, source=> source.Translations
+                .Map(dest => dest.Name, source => source.Translations
                     .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
                     .Select(t => t.Name).FirstOrDefault())
                 .Map(dest => dest.MainImage, source => $"http://localhost:5256/images/{source.MainImage}");
+
+            TypeAdapterConfig<ProductUpdateRequest, Product>.NewConfig().
+                IgnoreNullValues(true);
 
             TypeAdapterConfig<Brand, BrandResponse>.NewConfig()
                 .Map(dest => dest.UserCreated, source => source.CreatedBy.UserName)

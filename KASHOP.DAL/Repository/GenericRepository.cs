@@ -25,9 +25,13 @@ namespace KASHOP.DAL.Repository
             return entity;
         }
 
-        public async Task<List<T>> GetAllAsync(string[]? includes = null)
+        public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>> filter , string[]? includes = null)
         {
             IQueryable<T> query = _context.Set<T>(); 
+            if(filter != null)
+            {
+                query = query.Where(filter);
+            }
 
             if (includes != null) 
             {
@@ -59,6 +63,13 @@ namespace KASHOP.DAL.Repository
             }
 
             return await query.FirstOrDefaultAsync(filter);
+        }
+
+        public async Task<bool> UpdateAsync(T entity)
+        {
+            _context.Update(entity);
+            var affected = await _context.SaveChangesAsync();
+            return affected > 0;
         }
     }
 }

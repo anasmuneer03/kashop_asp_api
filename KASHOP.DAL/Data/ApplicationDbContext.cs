@@ -56,17 +56,29 @@ namespace KASHOP.DAL.Data
                 .HasForeignKey(p => p.UpdatedById)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            //builder.Entity<Brand>()
-            //    .HasOne(p => p.CreatedBy)
-            //    .WithMany()
-            //    .HasForeignKey(p => p.CreatedById)
-            //    .OnDelete(DeleteBehavior.Restrict);
+            builder.Entity<Brand>()
+                .HasOne(p => p.CreatedBy)
+                .WithMany()
+                .HasForeignKey(p => p.CreatedById)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            //builder.Entity<Brand>()
-            //    .HasOne(p => p.UpdatedBy)
-            //    .WithMany()
-            //    .HasForeignKey(p => p.UpdatedById)
-            //    .OnDelete(DeleteBehavior.Restrict);
+            builder.Entity<Brand>()
+                .HasOne(p => p.UpdatedBy)
+                .WithMany()
+                .HasForeignKey(p => p.UpdatedById)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Product>()
+                .HasOne(p => p.Category)
+                .WithMany(p => p.Products)
+                .HasForeignKey(p=>p.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Product>()
+               .HasOne(p => p.Brand)
+               .WithMany(p => p.Products)
+               .HasForeignKey(p => p.BrandId)
+               .OnDelete(DeleteBehavior.Restrict);
 
         }
 
