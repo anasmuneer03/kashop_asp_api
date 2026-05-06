@@ -39,6 +39,14 @@ namespace KASHOP.BLL.Mapping
                     .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
                         .Select(t => t.Name).FirstOrDefault())
                 .Map(dest => dest.BrandLogo, src => $"http://localhost:5256/images/{src.BrandLogo}");
+
+            TypeAdapterConfig<Cart, CartResponse>.NewConfig()
+                .Map(dest => dest.ProductName, src => src.Product.Translations
+                .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
+                .Select(t => t.Name).FirstOrDefault())
+                .Map(dest => dest.Price, src => src.Product.Price)
+                .Map(dest => dest.Discount, src => src.Product.Discount)
+                .Map(dest => dest.ProductImage, src => $"http://localhost:5256/images/{src.Product.MainImage}");
         }
     }
 }

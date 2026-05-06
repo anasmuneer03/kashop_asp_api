@@ -18,6 +18,8 @@ namespace KASHOP.PL.Extensions
             services.AddScoped<IFileService, FileService>();
             services.AddScoped<IBrandRepository, BrandRepository>();
             services.AddScoped<IBrandService, BrandService>();
+            services.AddScoped<ICartRepository, CartRepository>();
+            services.AddScoped<ICartService, CartService>();
 
             return services;
         }
