@@ -14,10 +14,11 @@ namespace KASHOP.DAL.Models
         public int Quantity { get; set; }
         public double Rate { get; set; }
         public string MainImage { get; set; }
-        public List<ProductTranslations> Translations { get; set; }
+        public List<ProductTranslations> Translations { get; set; } = new List<ProductTranslations>();
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         public int BrandId { get; set; }
         public Brand Brand { get; set; }
+        public List<ProductImage> Images { get; set; } =new List<ProductImage>();
     }
 }

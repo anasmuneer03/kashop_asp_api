@@ -1,5 +1,6 @@
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\appsettings.json
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\KASHOP.PL.staticwebassets.runtime.json
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\KASHOP.PL.staticwebassets.endpoints.json
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\KASHOP.PL.exe
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\KASHOP.PL.deps.json
@@ -53,8 +54,9 @@ C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\Microsof
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\Microsoft.OpenApi.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\Microsoft.SqlServer.Server.dll
-C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\Mono.TextTemplating.dll
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\Newtonsoft.Json.dll
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\Stripe.net.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\System.ClientModel.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\System.CodeDom.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\System.Composition.AttributedModel.dll
@@ -63,13 +65,10 @@ C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\System.C
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\System.Composition.Runtime.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\System.Composition.TypedParts.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
-C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\System.Drawing.Common.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\System.Memory.Data.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\System.Runtime.Caching.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\System.Security.Permissions.dll
-C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\System.Windows.Extensions.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
@@ -141,12 +140,7 @@ C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\runtimes
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
-C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
-C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\KASHOP.BLL.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\KASHOP.DAL.dll
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\KASHOP.BLL.pdb
@@ -179,4 +173,4 @@ C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\obj\Debug\net9.0\refint\K
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\obj\Debug\net9.0\KASHOP.PL.pdb
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\obj\Debug\net9.0\KASHOP.PL.genruntimeconfig.cache
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\obj\Debug\net9.0\ref\KASHOP.PL.dll
-C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\bin\Debug\net9.0\KASHOP.PL.staticwebassets.runtime.json
+C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\obj\Debug\net9.0\swae.build.ex.cache

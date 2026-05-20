@@ -14,5 +14,7 @@ namespace KASHOP.DAL.Models
         public string? Street { get; set; }
         public string? ResetPasswordCode { get; set; }
         public DateTime? ResetPasswordCodeExpire { get; set; }
+        public string? RefreshToken { get; set; }
+        public DateTime? RefreshTokenExpiry { get; set; }
     }
 }

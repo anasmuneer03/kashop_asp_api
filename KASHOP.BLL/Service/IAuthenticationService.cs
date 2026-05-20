@@ -1,5 +1,6 @@
 ﻿using KASHOP.DAL.DTO.Request;
 using KASHOP.DAL.DTO.Response;
+using KASHOP.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace KASHOP.BLL.Service
         Task<bool> ConfirmEmailAsync(string token, string userId);
         Task<ForgotPasswordResponse> RequestPasswordResetAsync(ForgotPasswordRequest request);
         Task<ResetPasswordResponse> PasswordResetAsync(ResetPasswordRequest request);
+        Task<LoginResponse> RefreshTokenAsync();
     }
 }

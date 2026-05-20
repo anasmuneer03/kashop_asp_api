@@ -2,12 +2,14 @@
 using KASHOP.DAL.DTO.Response;
 using KASHOP.DAL.Models;
 using Mapster;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Product = KASHOP.DAL.Models.Product;
 
 namespace KASHOP.BLL.Mapping
 {
@@ -28,7 +30,8 @@ namespace KASHOP.BLL.Mapping
                 .Map(dest => dest.Name, source => source.Translations
                     .Where(t => t.Language == CultureInfo.CurrentCulture.Name)
                     .Select(t => t.Name).FirstOrDefault())
-                .Map(dest => dest.MainImage, source => $"http://localhost:5256/images/{source.MainImage}");
+                .Map(dest => dest.MainImage, source => $"http://localhost:5256/images/{source.MainImage}")
+                .Map(dest => dest.SubImages, src => src.Images.Select(i => $"http://localhost:5256/images/{i.ImagePath}"));
 
             TypeAdapterConfig<ProductUpdateRequest, Product>.NewConfig().
                 IgnoreNullValues(true);

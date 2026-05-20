@@ -16,7 +16,7 @@ namespace KASHOP.BLL.Service
             {
                 EnableSsl = true,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential("anasqasem656@gmail.com", "ulxc nknz ybnd qhoo")
+                Credentials = new NetworkCredential("anasqasem656@gmail.com", "kscs ytjl buit uzrs")
             };
 
             return client.SendMailAsync(

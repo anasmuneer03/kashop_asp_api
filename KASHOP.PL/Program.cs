@@ -41,7 +41,7 @@ namespace KASHOP.PL
             //languages
             builder.Services.AddLocalizationServices();
 
-            builder.Services.AddApplicationServices();
+            builder.Services.AddApplicationServices(builder.Configuration);
 
             //jwt auth
             builder.Services.AddJwtAuthenticationServices(builder.Configuration);

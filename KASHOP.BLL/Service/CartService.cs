@@ -92,6 +92,7 @@ namespace KASHOP.BLL.Service
         {
             var carts = await _cartRepository.GetAllAsync(
                 filter: c => c.UserId == userId);
+
             if(!carts.Any())
                 return false;
    
