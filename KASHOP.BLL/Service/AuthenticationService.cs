@@ -90,7 +90,7 @@ namespace KASHOP.BLL.Service
             issuer: _configuration["Jwt:Issuer"],
             audience: _configuration["Jwt:Audience"],
             claims: userClaims,
-            expires: DateTime.Now.AddSeconds(30),
+            expires: DateTime.Now.AddDays(15),
             signingCredentials: credentials
             );
 

@@ -173,4 +173,3 @@ C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\obj\Debug\net9.0\refint\K
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\obj\Debug\net9.0\KASHOP.PL.pdb
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\obj\Debug\net9.0\KASHOP.PL.genruntimeconfig.cache
 C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\obj\Debug\net9.0\ref\KASHOP.PL.dll
-C:\Users\user\Documents\asp.net13\api\KASHOP\KASHOP.PL\obj\Debug\net9.0\swae.build.ex.cache
