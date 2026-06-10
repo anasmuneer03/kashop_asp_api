@@ -19,7 +19,7 @@ namespace KASHOP.BLL.Service
         {
             _categoryRepository = categoryRepository;
         }
-        public async Task <CategoryResponse> CreateCategory(CategoryRequest request)
+        public async Task<CategoryResponse> CreateCategory(CategoryRequest request)
         {
             var category = request.Adapt<Category>();
             await _categoryRepository.CreateAsync(category);
@@ -29,8 +29,8 @@ namespace KASHOP.BLL.Service
         public async Task<List<CategoryResponse>> GetAllCategories()
         {
             var categories = await _categoryRepository.GetAllAsync(
-                c => c.Status == EntityStatus.Active,
-                new string[] {nameof(Category.Translations),
+                filter: c => c.Status == EntityStatus.Active,
+                includes: new string[] {nameof(Category.Translations),
                 nameof(Category.CreatedBy)});
 
             var response = categories.Adapt<List<CategoryResponse>>();

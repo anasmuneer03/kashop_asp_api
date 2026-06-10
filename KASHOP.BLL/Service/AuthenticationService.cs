@@ -43,11 +43,12 @@ namespace KASHOP.BLL.Service
                 return new RegisterResponse()
                 { Success = false, Message = "error", Errors = result.Errors.Select(e => e.Description).ToList() };
 
-            await _userManager.AddToRoleAsync(user, "User");
+            await _userManager.AddToRoleAsync(user, "User"); // --> table UserRoles
 
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             token = Uri.EscapeDataString(token);
             var emailUrl = $"{_httpContextAccessor.HttpContext.Request.Scheme}://{_httpContextAccessor.HttpContext.Request.Host}/api/account/ConfirmEmail?token={token}&userId={user.Id}";
+
             await _emailSender.SendEmailAsync(user.Email, "Welcome", $"<h1>welcome {user.UserName}</h1>" +
                 $"<a href='{emailUrl}'>confirm</a>");
             return new RegisterResponse() { Success = true, Message = "success" };
@@ -62,6 +63,14 @@ namespace KASHOP.BLL.Service
             if (!IsEmailConfirmed)
                 return new LoginResponse() { Success = false, Message = "Email Is Not Confirmed" };
 
+            if (await _userManager.IsLockedOutAsync(user))
+            {
+                return new LoginResponse
+                {
+                    Success = false,
+                    Message = "account is blocked"
+                };
+            }
 
             var result = await _userManager.CheckPasswordAsync(user, request.Password);
             if(!result)
