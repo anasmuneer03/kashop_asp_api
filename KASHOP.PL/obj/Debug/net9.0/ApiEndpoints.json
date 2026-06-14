@@ -96,6 +96,22 @@
   },
   {
     "ContainingType": "KASHOP.PL.Controllers.UserManagementController",
+    "Method": "Delete",
+    "RelativePath": "api/admin/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KASHOP.PL.Controllers.UserManagementController",
     "Method": "changeRole",
     "RelativePath": "api/admin/{id}/changeRole",
     "HttpMethod": "PATCH",

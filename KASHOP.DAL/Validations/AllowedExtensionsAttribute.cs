@@ -10,7 +10,7 @@ namespace KASHOP.DAL.Validations
 {
     public class AllowedExtensionsAttribute :ValidationAttribute
     {
-        string[] _extensions = { ".jpp", ".webp"};
+        string[] _extensions = { ".jpg", ".webp"};
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
             if(value is IFormFile file)

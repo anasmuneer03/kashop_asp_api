@@ -5,6 +5,7 @@ using KASHOP.DAL.Models;
 using KASHOP.DAL.Repository;
 using KASHOP.DAL.utils;
 using KASHOP.PL.Extensions;
+using KASHOP.PL.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
@@ -69,6 +70,9 @@ namespace KASHOP.PL
 
             app.UseStaticFiles();
             app.MapControllers();
+
+            app.UseCustomMiddleware();
+            app.UseMiddleware<GlobalExceptionHandling>();
 
             using (var scope = app.Services.CreateScope())
             {
